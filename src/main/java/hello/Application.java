@@ -1,5 +1,8 @@
 package hello;
 
+import com.sun.tools.doclets.formats.html.SourceToHTMLConverter;
+
+import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -12,18 +15,22 @@ public class Application {
         Scanner scanner = new Scanner(System.in).useDelimiter("\n");
         int x = 0;
 
-
-        while (x < 2) {
+        while (x < 1) {
             System.out.println("Please choose drink A or B");
             String input = scanner.next();
+            boolean selected = false;
 
-            String[] inventory = new String[2];
-            inventory[0] = "A";
-            inventory[1] = "B";
+            Inventory inventory = new Inventory();
 
-            if (Arrays.asList(inventory).contains(input)) {
-                System.out.println("Here is your drink");
-                System.out.println(input);
+            for (int i = 0; i<2; i++) {
+                if (inventory.getIndexValue(i).equals(input)) {
+                    System.out.println("Here is your drink");
+                    System.out.println(input);
+                    selected = true;
+                }
+            }
+            if (selected == false) {
+                System.out.println("Unavailable, please make a different selection.");
             }
 
             x += 1;
