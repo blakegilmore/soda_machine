@@ -12,7 +12,7 @@ public class Application {
 
 
         while (x < 2) {
-            System.out.println("Artist: ");
+            System.out.println("Please choose drink A or B");
             String input = scanner.next();
             System.out.println(input);
             x += 1;
