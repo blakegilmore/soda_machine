@@ -12,7 +12,7 @@ public class Application {
         int x = 0;
 
         while (x < 5) {
-            System.out.println("Please choose drink A or B");
+            System.out.println("Please choose Pepsi or Coke");
             String input = scanner.next();
             boolean selected = false;
 
