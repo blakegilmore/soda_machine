@@ -7,10 +7,10 @@ import java.util.Scanner;
  */
 public class Selection {
     Scanner scanner = new Scanner(System.in).useDelimiter("\n");
-    int x = 0;
+    boolean on = true;
 
     void selectSoda(){
-        while (x < 5) {
+        while (on == true) {
             boolean selected = false;
             Inventory inventory = new Inventory();
 
@@ -22,6 +22,9 @@ public class Selection {
             }
             if (input.equals("B")) {
                 input = "Coke";
+            }
+            if (input.equals("off")) {
+                on = false;
             }
 
             for (int i = 0; i<2; i++) {
@@ -40,7 +43,6 @@ public class Selection {
                 System.out.println("\n");
             }
 
-            x += 1;
         }
 
     }
