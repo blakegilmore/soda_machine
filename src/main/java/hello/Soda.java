@@ -8,4 +8,9 @@ public class Soda {
     String brand;
     int currentPosition;
     float price;
+
+    Soda(String type,String brand){
+        this.type = type;
+        this.brand = brand;
+    }
 }

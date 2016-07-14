@@ -18,7 +18,6 @@ public class Selection {
             String input = scanner.next();
             if(input.equals("A")){
                 input = "Pepsi";
-                System.out.println(input);
             }
             if (input.equals("B")) {
                 input = "Coke";
@@ -28,7 +27,7 @@ public class Selection {
             }
 
             for (int i = 0; i<2; i++) {
-                if (inventory.getIndexValue(i).equals(input)) {
+                if (inventory.getIndexValue(i).brand.equals(input)) {
                     System.out.println("Here is your drink");
                     System.out.println("|\n|");
                     System.out.println("|\n");

@@ -4,14 +4,14 @@ package hello;
  * Created by blakegilmore on 7/13/16.
  */
 public class Inventory {
-    String[] inventory = new String[2];
+    Soda[] inventory = new Soda[2];
 
     Inventory(){
-        this.inventory[0]="Pepsi";
-        this.inventory[1]="Coke";
+        this.inventory[0] = new Soda("One", "Pepsi");
+        this.inventory[1] = new Soda("Zero", "Coke");
     }
 
-    String getIndexValue(int pos){
+    Soda getIndexValue(int pos){
         return inventory[pos];
     }
 
