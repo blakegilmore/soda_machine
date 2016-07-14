@@ -30,6 +30,7 @@ public class Application {
             }
             if (selected == false) {
                 System.out.println("Unavailable, please make a different selection.");
+                System.out.println("\n");
             }
 
             x += 1;
