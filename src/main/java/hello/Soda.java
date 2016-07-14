@@ -8,13 +8,13 @@ import java.lang.reflect.Array;
 public class Soda {
     String type;
     String brand;
-    Array currentPosition;
+//    int[] currentPosition;
     double price;
 
-    Soda(String type,String brand, Array currentPosition){
+    Soda(String type,String brand){
         this.type = type;
         this.brand = brand;
-        this.currentPosition = currentPosition;
+//        this.currentPosition = [0];
         this.price = 1.50;
     }
 }
