@@ -12,11 +12,19 @@ public class Application {
         int x = 0;
 
         while (x < 5) {
-            System.out.println("Please choose Pepsi or Coke");
+            System.out.println("Please choose A (Pepsi) or B (Coke)");
             String input = scanner.next();
             boolean selected = false;
 
             Inventory inventory = new Inventory();
+
+            if(input.equals("A")){
+                input = "Pepsi";
+                System.out.println(input);
+            }
+            if (input.equals("B")) {
+                input = "Coke";
+            }
 
             for (int i = 0; i<2; i++) {
                 if (inventory.getIndexValue(i).equals(input)) {
