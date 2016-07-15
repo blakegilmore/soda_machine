@@ -27,12 +27,7 @@ public class Selection {
 
             for (int i = 0; i < inventory.getInventorySizeByInt(); i++) {
                 if (inventory.getIndexValue(i).brand.equals(input)) {
-                    System.out.println("Here is your drink");
-                    System.out.println("|\n|");
-                    System.out.println("|\n");
-                    System.out.println(input);
-                    System.out.println("\n");
-                    selected = true;
+                    dispenseDrink(input);
                 }
             }
 
@@ -67,5 +62,15 @@ public class Selection {
         }
 
         System.out.println("\n");
+    }
+
+    void dispenseDrink(String input){
+        System.out.println("Here is your drink");
+        System.out.println("|\n|");
+        System.out.println("|\n");
+        System.out.println(input);
+        System.out.println("\n");
+        selected = true;
+        return;
     }
 }
