@@ -36,16 +36,23 @@ public class Inventory {
         System.out.println("There are "+inventory.size()+" sodas total.");
     }
 
-    Soda getIndexValue(int pos){
+    public Soda getIndexValue(int pos){
         return inventory.get(pos);
     }
 
-    void addSoda(String brand){
+    public void addSoda(String brand){
         inventory.add(new Soda(brand));
+        System.out.println("Added " + inventory.get(inventory.size()-1).brand);
     }
 
-//    void removeSoda(int pos){
-//        inventory.remove(pos);
-//    }
+    public void removeSoda(int pos){
+        if (pos < inventory.size()) {
+            System.out.println("Removing " + inventory.get(pos).brand);
+            inventory.remove(pos);
+        } else {
+            System.out.println("That item doesn't exist.");
+        }
+        return;
+    }
 
 }
