@@ -16,20 +16,13 @@ public class Selection {
             selected = false;
             String input = captureUserInput("Please choose A (Pepsi) or B (Coke)");
             input = changeNames(input);
-
-            if (input.equals("inventory"))
-                manipulateInventory();
-
+            if (input.equals("inventory")) { manipulateInventory(); }
             checkInventoryForSelection(input);
-
-            if (input.equals("off"))
-                on = false;
-
+            if (input.equals("off")) { on = false; }
             if (selected == false) {
                 System.out.println("Unavailable, please make a different selection.");
                 System.out.println("\n");
             }
-
         }
     }
 
