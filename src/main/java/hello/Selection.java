@@ -13,9 +13,7 @@ public class Selection {
 
     void selectSoda() {
         while (on == true) {
-
-            System.out.println("Please choose A (Pepsi) or B (Coke)");
-            String input = scanner.next();
+            String input = captureUserInput("Please choose A (Pepsi) or B (Coke)");
             input = changeNames(input);
             if (input.equals("off"))
                 on = false;
@@ -38,22 +36,18 @@ public class Selection {
 
     void manipulateInventory(){
         selected = true;
-        System.out.println("all or one?");
-        String input = scanner.next();
+        String input = captureUserInput("all or one?");
         if (input.equals("all")) {
             inventory.getInventorySize();
             inventory.getInventoryByBrand();
         } else {
-            System.out.println("add or remove?");
-            input = scanner.next();
+            input = captureUserInput("add or remove?");
             if (input.equals("add")) {
-                System.out.println("brand?");
-                input = scanner.next();
+                input = captureUserInput("brand?");
                 inventory.addSoda(input);
             }
             if (input.equals("remove")) {
-                System.out.println("position?");
-                input = scanner.next();
+                input = captureUserInput("position?");
                 inventory.removeSoda(Integer.parseInt(input));
             }
         }
@@ -76,6 +70,12 @@ public class Selection {
             input = "Pepsi";
         if (input.equals("B"))
             input = "Coke";
+        return input;
+    }
+
+    String captureUserInput(String prompt){
+        System.out.println(prompt);
+        String input = scanner.next();
         return input;
     }
 }
