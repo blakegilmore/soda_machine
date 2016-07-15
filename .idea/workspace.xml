@@ -2,15 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5bdbda70-f0ed-4aed-8c8c-824d2b8905e0" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/hello/AddSoda.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/hello/RemoveSoda.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/hello/Inventory.class" afterPath="$PROJECT_DIR$/build/classes/main/hello/Inventory.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/hello/Selection.class" afterPath="$PROJECT_DIR$/build/classes/main/hello/Selection.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/hello/Soda.class" afterPath="$PROJECT_DIR$/build/classes/main/hello/Soda.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/hello/Inventory.java" afterPath="$PROJECT_DIR$/src/main/java/hello/Inventory.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/hello/Selection.java" afterPath="$PROJECT_DIR$/src/main/java/hello/Selection.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/hello/Soda.java" afterPath="$PROJECT_DIR$/src/main/java/hello/Soda.java" />
     </list>
     <ignored path="Soda_Machine.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -57,11 +50,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Selection.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Selection.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/hello/Selection.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="206">
-              <caret line="30" column="42" selection-start-line="30" selection-start-column="42" selection-end-line="30" selection-end-column="42" />
+            <state relative-caret-position="108">
+              <caret line="31" column="49" selection-start-line="31" selection-start-column="49" selection-end-line="31" selection-end-column="49" />
               <folding />
             </state>
           </provider>
@@ -77,21 +70,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Inventory.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Inventory.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/hello/Inventory.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="25" column="38" selection-start-line="25" selection-start-column="38" selection-end-line="25" selection-end-column="38" />
+            <state relative-caret-position="195">
+              <caret line="36" column="5" selection-start-line="36" selection-start-column="5" selection-end-line="36" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#180#186#0" expanded="true" />
                 <element signature="e#345#346#0" expanded="true" />
                 <element signature="e#377#378#0" expanded="true" />
-                <element signature="e#481#489#0" expanded="true" />
-                <element signature="e#847#848#0" expanded="true" />
-                <element signature="e#888#889#0" expanded="true" />
-                <element signature="e#921#922#0" expanded="true" />
-                <element signature="e#967#968#0" expanded="true" />
+                <element signature="e#603#611#0" expanded="true" />
+                <element signature="e#851#852#0" expanded="true" />
+                <element signature="e#932#933#0" expanded="true" />
+                <element signature="e#966#967#0" expanded="true" />
+                <element signature="e#1007#1008#0" expanded="true" />
+                <element signature="e#1040#1041#0" expanded="true" />
+                <element signature="e#1086#1087#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -850,11 +845,13 @@
             <element signature="e#180#186#0" expanded="true" />
             <element signature="e#345#346#0" expanded="true" />
             <element signature="e#377#378#0" expanded="true" />
-            <element signature="e#481#489#0" expanded="true" />
-            <element signature="e#847#848#0" expanded="true" />
-            <element signature="e#888#889#0" expanded="true" />
-            <element signature="e#921#922#0" expanded="true" />
-            <element signature="e#967#968#0" expanded="true" />
+            <element signature="e#603#611#0" expanded="true" />
+            <element signature="e#851#852#0" expanded="true" />
+            <element signature="e#932#933#0" expanded="true" />
+            <element signature="e#966#967#0" expanded="true" />
+            <element signature="e#1007#1008#0" expanded="true" />
+            <element signature="e#1040#1041#0" expanded="true" />
+            <element signature="e#1086#1087#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -955,14 +952,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/hello/Selection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="30" column="42" selection-start-line="30" selection-start-column="42" selection-end-line="30" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/hello/Soda.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -973,19 +962,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/hello/Inventory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="25" column="38" selection-start-line="25" selection-start-column="38" selection-end-line="25" selection-end-column="38" />
+        <state relative-caret-position="195">
+          <caret line="36" column="5" selection-start-line="36" selection-start-column="5" selection-end-line="36" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#180#186#0" expanded="true" />
             <element signature="e#345#346#0" expanded="true" />
             <element signature="e#377#378#0" expanded="true" />
-            <element signature="e#481#489#0" expanded="true" />
-            <element signature="e#847#848#0" expanded="true" />
-            <element signature="e#888#889#0" expanded="true" />
-            <element signature="e#921#922#0" expanded="true" />
-            <element signature="e#967#968#0" expanded="true" />
+            <element signature="e#603#611#0" expanded="true" />
+            <element signature="e#851#852#0" expanded="true" />
+            <element signature="e#932#933#0" expanded="true" />
+            <element signature="e#966#967#0" expanded="true" />
+            <element signature="e#1007#1008#0" expanded="true" />
+            <element signature="e#1040#1041#0" expanded="true" />
+            <element signature="e#1086#1087#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/hello/Selection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="31" column="49" selection-start-line="31" selection-start-column="49" selection-end-line="31" selection-end-column="49" />
+          <folding />
         </state>
       </provider>
     </entry>

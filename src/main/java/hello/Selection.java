@@ -29,22 +29,24 @@ public class Selection {
                 System.out.println("all or one?");
                 input = scanner.next();
                 if (input.equals("all")) {
+                    inventory.getInventorySize();
                     inventory.getInventoryByBrand();
-                }
-                System.out.println("add or remove?");
-                input = scanner.next();
-                if (input.equals("add")) {
-                    System.out.println("brand?");
+                } else {
+                    System.out.println("add or remove?");
                     input = scanner.next();
-                    inventory.addSoda(input);
-                }
-                // else if (input.equals("remove")) {
+                    if (input.equals("add")) {
+                        System.out.println("brand?");
+                        input = scanner.next();
+                        inventory.addSoda(input);
+                    }
+                    // else if (input.equals("remove")) {
 //                    System.out.println("position?");
 //                    input = scanner.next();
 //                    inventory.removeSoda(Integer.parseInt(input));
 //                }
-                else {
-                    continue;
+                    else {
+                        continue;
+                    }
                 }
             }
             System.out.println("\n");

@@ -18,6 +18,11 @@ public class Inventory {
         return inventory;
     }
 
+    public Inventory setInventory(List<Soda> inventory) {
+        this.inventory = inventory;
+        return this;
+    }
+
     public List<String> getInventoryByBrand() {
         List<String> inventoryByBrand = new ArrayList<String>();
         for (int i=0;i<inventory.size();i++) {
@@ -27,9 +32,8 @@ public class Inventory {
         return inventoryByBrand;
     }
 
-    public Inventory setInventory(List<Soda> inventory) {
-        this.inventory = inventory;
-        return this;
+    public void getInventorySize() {
+        System.out.println("There are "+inventory.size()+" sodas total.");
     }
 
     Soda getIndexValue(int pos){
