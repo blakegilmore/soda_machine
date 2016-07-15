@@ -16,10 +16,7 @@ public class Selection {
 
             System.out.println("Please choose A (Pepsi) or B (Coke)");
             String input = scanner.next();
-            if (input.equals("A"))
-                input = "Pepsi";
-            if (input.equals("B"))
-                input = "Coke";
+            input = changeNames(input);
             if (input.equals("off"))
                 on = false;
             if (input.equals("inventory"))
@@ -72,5 +69,13 @@ public class Selection {
         System.out.println("\n");
         selected = true;
         return;
+    }
+
+    String changeNames(String input){
+        if (input.equals("A"))
+            input = "Pepsi";
+        if (input.equals("B"))
+            input = "Coke";
+        return input;
     }
 }
