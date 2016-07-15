@@ -16,18 +16,14 @@ public class Selection {
 
             System.out.println("Please choose A (Pepsi) or B (Coke)");
             String input = scanner.next();
-            if (input.equals("A")) {
+            if (input.equals("A"))
                 input = "Pepsi";
-            }
-            if (input.equals("B")) {
+            if (input.equals("B"))
                 input = "Coke";
-            }
-            if (input.equals("off")) {
+            if (input.equals("off"))
                 on = false;
-            }
-            if (input.equals("inventory")) {
+            if (input.equals("inventory"))
                 manipulateInventory();
-            }
 
             for (int i = 0; i < inventory.getInventorySizeByInt(); i++) {
                 if (inventory.getIndexValue(i).brand.equals(input)) {
