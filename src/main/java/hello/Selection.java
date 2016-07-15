@@ -1,7 +1,8 @@
 package hello;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
-
 /**
  * Created by blakegilmore on 7/14/16.
  */
@@ -28,11 +29,11 @@ public class Selection {
 
     void manipulateInventory(){
         selected = true;
-        String input = captureUserInput("all or one?");
+        String input = captureUserInput("change all, multiple, or one?");
         if (input.equals("all")) {
             inventory.getInventorySize();
             inventory.getInventoryByBrand();
-        } else {
+        } else if (input.equals("one")){
             input = captureUserInput("add or remove?");
             if (input.equals("add")) {
                 input = captureUserInput("brand?");
@@ -42,6 +43,11 @@ public class Selection {
                 input = captureUserInput("position?");
                 inventory.removeSoda(Integer.parseInt(input));
             }
+        } else {
+            ArrayList<Integer> sodaList = new ArrayList<Integer>();
+            input = captureUserInput("id of soda you want to remove:");
+            sodaList.add(Integer.parseInt(input));
+            inventory.getSodasById(sodaList);
         }
 
         System.out.println("\n");

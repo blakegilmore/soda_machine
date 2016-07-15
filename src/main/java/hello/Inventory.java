@@ -45,6 +45,13 @@ public class Inventory {
         return inventory.get(pos);
     }
 
+    public void getSodasById(ArrayList<Integer> input){
+        for(int i : input){
+            if(getIndexValue(i) != null) { removeSoda(i); }
+        }
+        return;
+    }
+
     public void addSoda(String brand){
         inventory.add(new Soda(brand));
         System.out.println("Added " + inventory.get(inventory.size()-1).brand);
