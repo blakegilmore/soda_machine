@@ -29,7 +29,7 @@ public class Selection {
                 manipulateInventory();
             }
 
-            for (int i = 0; i < 2; i++) {
+            for (int i = 0; i < inventory.getInventorySizeByInt(); i++) {
                 if (inventory.getIndexValue(i).brand.equals(input)) {
                     System.out.println("Here is your drink");
                     System.out.println("|\n|");

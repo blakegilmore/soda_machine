@@ -34,6 +34,11 @@ public class Inventory {
 
     public void getInventorySize() {
         System.out.println("There are "+inventory.size()+" sodas total.");
+        return;
+    }
+
+    public int getInventorySizeByInt() {
+        return inventory.size();
     }
 
     public Soda getIndexValue(int pos){
