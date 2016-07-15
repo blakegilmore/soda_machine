@@ -13,18 +13,17 @@ public class Selection {
 
     void selectSoda() {
         while (on == true) {
+            selected = false;
             String input = captureUserInput("Please choose A (Pepsi) or B (Coke)");
             input = changeNames(input);
-            if (input.equals("off"))
-                on = false;
+
             if (input.equals("inventory"))
                 manipulateInventory();
 
-            for (int i = 0; i < inventory.getInventorySizeByInt(); i++) {
-                if (inventory.getIndexValue(i).brand.equals(input)) {
-                    dispenseDrink(input);
-                }
-            }
+            checkInventoryForSelection(input);
+
+            if (input.equals("off"))
+                on = false;
 
             if (selected == false) {
                 System.out.println("Unavailable, please make a different selection.");
@@ -56,12 +55,12 @@ public class Selection {
     }
 
     void dispenseDrink(String input){
+        selected = true;
         System.out.println("Here is your drink");
         System.out.println("|\n|");
         System.out.println("|\n");
         System.out.println(input);
         System.out.println("\n");
-        selected = true;
         return;
     }
 
@@ -77,5 +76,13 @@ public class Selection {
         System.out.println(prompt);
         String input = scanner.next();
         return input;
+    }
+
+    void checkInventoryForSelection(String input){
+        for (int i = 0; i < inventory.getInventorySizeByInt(); i++) {
+            if (inventory.getIndexValue(i).brand.equals(input)) {
+                dispenseDrink(input);
+            }
+        }
     }
 }
