@@ -26,13 +26,24 @@ public class Selection {
                 on = false;
             }
             if (input.equals("inventory")) {
+                System.out.println("all or one?");
+                input = scanner.next();
+                if (input.equals("all")) {
+                    inventory.getInventoryByBrand();
+                }
                 System.out.println("add or remove?");
                 input = scanner.next();
                 if (input.equals("add")) {
-                    //AddSoda.addSoda();
-                } else if (input.equals("remove")) {
-                    //AddSoda.removeSoda();
-                } else {
+                    System.out.println("brand?");
+                    input = scanner.next();
+                    inventory.addSoda(input);
+                }
+                // else if (input.equals("remove")) {
+//                    System.out.println("position?");
+//                    input = scanner.next();
+//                    inventory.removeSoda(Integer.parseInt(input));
+//                }
+                else {
                     continue;
                 }
             }

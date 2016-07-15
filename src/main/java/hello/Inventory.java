@@ -1,20 +1,47 @@
 package hello;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by blakegilmore on 7/13/16.
  */
 public class Inventory {
-    Soda[] inventory = new Soda[4];
+    List<Soda> inventory = new ArrayList<Soda>();
 
     Inventory(){
-        this.inventory[0] = new Soda("One", "Pepsi");
-        this.inventory[1] = new Soda("Zero", "Coke");
-        this.inventory[2] = new Soda("One", "Pepsi");
-        this.inventory[3] = new Soda("Zero", "Coke");
+        this.inventory.add(new Soda("Pepsi"));
+        this.inventory.add(new Soda("Coke"));
+    }
+
+    public List<Soda> getInventory() {
+        return inventory;
+    }
+
+    public List<String> getInventoryByBrand() {
+        List<String> inventoryByBrand = new ArrayList<String>();
+        for (int i=0;i<inventory.size();i++) {
+            inventoryByBrand.add(inventory.get(i).brand);
+        }
+        System.out.println(inventoryByBrand);
+        return inventoryByBrand;
+    }
+
+    public Inventory setInventory(List<Soda> inventory) {
+        this.inventory = inventory;
+        return this;
     }
 
     Soda getIndexValue(int pos){
-        return inventory[pos];
+        return inventory.get(pos);
     }
+
+    void addSoda(String brand){
+        inventory.add(new Soda(brand));
+    }
+
+//    void removeSoda(int pos){
+//        inventory.remove(pos);
+//    }
 
 }
