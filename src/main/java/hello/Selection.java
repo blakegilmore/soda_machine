@@ -29,30 +29,41 @@ public class Selection {
 
     void manipulateInventory(){
         selected = true;
-        String input = captureUserInput("add or remove?");
+        String input = captureUserInput("view, add, or remove?");
+        if (input.equals("view")) {
+                inventory.getInventoryByBrand();
+        }
         if (input.equals("add")) {
-            input = captureUserInput("restock all, multiple, or one?");
+            input = captureUserInput("restock all or one?");
             if (input.equals("all")) {
                 String brand = captureUserInput("brand?");
                 int toAdd = 20 - inventory.getInventorySizeByInt();
                 inventory.addMultipleSodas(toAdd, brand);
             }
-        } else if (input.equals("one")){
-            input = captureUserInput("add or remove?");
-            if (input.equals("add")) {
-                input = captureUserInput("brand?");
-                inventory.addSoda(input);
-                inventory.getInventoryByBrand();
+            else if (input.equals("one")) {
+                String brand = captureUserInput("brand?");
+                inventory.addSoda(brand);
             }
-            if (input.equals("remove")) {
+            else {
+                System.out.println("Unavailable, please make a different selection.");
+                System.out.println("\n");
+            }
+        }
+        if (input.equals("remove")){
+            input = captureUserInput("remove all, multiple, or one?");
+            if (input.equals("all")) {
+                inventory.removeAll();
+            }
+            if (input.equals("multiple")){
+                ArrayList<Integer> sodaList = new ArrayList<Integer>();
+                input = captureUserInput("id of soda you want to remove:");
+                sodaList.add(Integer.parseInt(input));
+                inventory.removeSodasById(sodaList);
+            }
+            if (input.equals("one")) {
                 input = captureUserInput("position?");
                 inventory.removeSoda(Integer.parseInt(input));
             }
-        } else {
-            ArrayList<Integer> sodaList = new ArrayList<Integer>();
-            input = captureUserInput("id of soda you want to remove:");
-            sodaList.add(Integer.parseInt(input));
-            inventory.removeSodasById(sodaList);
         }
 
         System.out.println("\n");

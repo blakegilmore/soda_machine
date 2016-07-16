@@ -59,7 +59,7 @@ public class Inventory {
 
     /// method that refills the stock by adding the number of sodas needed for the rack to be filled
     public void addMultipleSodas(int toAdd, String brand){
-        for (int i = 0;i<toAdd;i++){
+        for (int i = 0;i < toAdd;i++){
             addSoda(brand);
         }
         getInventoryByBrand();
@@ -67,12 +67,18 @@ public class Inventory {
 
     public void removeSoda(int pos){
         if (pos < inventory.size()) {
-            System.out.println("Removing " + inventory.get(pos).brand);
             inventory.remove(pos);
+            System.out.println("Removed " + inventory.get(pos).brand);
         } else {
             System.out.println("That item doesn't exist.");
         }
         return;
+    }
+
+    public void removeAll(){
+        for (int i = 0;i < inventory.size();i++){
+            removeSoda(i);
+        }
     }
 
 
