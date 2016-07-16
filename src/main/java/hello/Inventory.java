@@ -67,8 +67,8 @@ public class Inventory {
 
     public void removeSoda(int pos){
         if (pos < inventory.size()) {
-            inventory.remove(pos);
             System.out.println("Removed " + inventory.get(pos).brand);
+            inventory.remove(pos);
         } else {
             System.out.println("That item doesn't exist.");
         }
@@ -76,8 +76,9 @@ public class Inventory {
     }
 
     public void removeAll(){
-        for (int i = 0;i < inventory.size();i++){
-            removeSoda(i);
+        int sizeOfInventory = inventory.size();
+        for (int i = sizeOfInventory-1;i > -1;i--){
+            removeSoda(0);
         }
     }
 
