@@ -45,7 +45,7 @@ public class Inventory {
         return inventory.get(pos);
     }
 
-    public void getSodasById(ArrayList<Integer> input){
+    public void removeSodasById(ArrayList<Integer> input){
         for(int i : input){
             if(getIndexValue(i) != null) { removeSoda(i); }
         }
@@ -55,6 +55,7 @@ public class Inventory {
     public void addSoda(String brand){
         inventory.add(new Soda(brand));
         System.out.println("Added " + inventory.get(inventory.size()-1).brand);
+        getInventoryByBrand();
     }
 
     public void removeSoda(int pos){

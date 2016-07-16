@@ -29,10 +29,14 @@ public class Selection {
 
     void manipulateInventory(){
         selected = true;
-        String input = captureUserInput("change all, multiple, or one?");
-        if (input.equals("all")) {
-            inventory.getInventorySize();
-            inventory.getInventoryByBrand();
+        String input = captureUserInput("add or remove?");
+        if (input.equals("add")) {
+            input = captureUserInput("all, multiple, or one?");
+            if (input.equals("all")) {
+                /// calculate the difference between a full rack of 20
+                // and the number currently in the rack
+                /// call method that loops through add soda for each number needed to be added
+            }
         } else if (input.equals("one")){
             input = captureUserInput("add or remove?");
             if (input.equals("add")) {
@@ -47,7 +51,7 @@ public class Selection {
             ArrayList<Integer> sodaList = new ArrayList<Integer>();
             input = captureUserInput("id of soda you want to remove:");
             sodaList.add(Integer.parseInt(input));
-            inventory.getSodasById(sodaList);
+            inventory.removeSodasById(sodaList);
         }
 
         System.out.println("\n");
