@@ -56,8 +56,14 @@ public class Selection {
             }
             if (input.equals("multiple")){
                 ArrayList<Integer> sodaList = new ArrayList<Integer>();
-                input = captureUserInput("id of soda you want to remove:");
-                sodaList.add(Integer.parseInt(input));
+                int numberToRemove = Integer.parseInt(captureUserInput("how many sodas do you want to remove?"));
+                if (numberToRemove > inventory.getInventorySizeByInt()){
+                    numberToRemove = inventory.getInventorySizeByInt();
+                }
+                for(int x = 0;x < numberToRemove-1;x++) {
+                    int id = Integer.parseInt(captureUserInput("id of soda:"));
+                    sodaList.add(id);
+                }
                 inventory.removeSodasById(sodaList);
             }
             if (input.equals("one")) {
