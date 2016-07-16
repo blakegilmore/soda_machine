@@ -41,13 +41,20 @@ public class Inventory {
         return inventory.size();
     }
 
-    public Soda getIndexValue(int pos){
+    public Soda getValueFromIndex(int pos){
+        if (pos >= inventory.size()) {
+            throw new IndexOutOfBoundsException();
+        }
         return inventory.get(pos);
     }
 
     public void removeSodasById(ArrayList<Integer> input){
         for(int i : input){
-            if(getIndexValue(i) != null) { removeSoda(i); }
+            if(inventory.get(0) instanceof Soda) {
+                removeSoda(0);
+            } else {
+                System.out.println("Already removed.");
+            }
         }
         return;
     }

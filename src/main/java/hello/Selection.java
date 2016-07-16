@@ -60,7 +60,7 @@ public class Selection {
                 if (numberToRemove > inventory.getInventorySizeByInt()){
                     numberToRemove = inventory.getInventorySizeByInt();
                 }
-                for(int x = 0;x < numberToRemove-1;x++) {
+                for(int x = 0;x < numberToRemove;x++) {
                     int id = Integer.parseInt(captureUserInput("id of soda:"));
                     sodaList.add(id);
                 }
@@ -101,7 +101,7 @@ public class Selection {
 
     void checkInventoryForSelection(String input){
         for (int i = 0; i < inventory.getInventorySizeByInt(); i++) {
-            if (inventory.getIndexValue(i).brand.equals(input)) {
+            if (inventory.getValueFromIndex(i).brand.equals(input)) {
                 dispenseDrink(input);
             }
         }
