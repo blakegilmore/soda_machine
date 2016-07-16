@@ -10,8 +10,11 @@ public class Inventory {
     List<Soda> inventory = new ArrayList<Soda>();
 
     Inventory(){
+        this.inventory.add(new Soda("Coke 1"));
         this.inventory.add(new Soda("Pepsi"));
-        this.inventory.add(new Soda("Coke"));
+        this.inventory.add(new Soda("Coke 3"));
+        this.inventory.add(new Soda("Coke 4"));
+        this.inventory.add(new Soda("Pepsi"));
     }
 
     public List<Soda> getInventory() {
@@ -50,10 +53,12 @@ public class Inventory {
 
     public void removeSodasById(ArrayList<Integer> input){
         for(int i : input){
-            if(inventory.get(0) instanceof Soda) {
-                removeSoda(0);
-            } else {
-                System.out.println("Already removed.");
+            //// loop through the inventory to find the id that matches the element
+            for(int j = 0;j < inventory.size();j++){
+                System.out.println(inventory.get(j).id+" I'm the id");
+                if (inventory.get(j).id == i){
+                    removeSoda(j);
+                }
             }
         }
         return;

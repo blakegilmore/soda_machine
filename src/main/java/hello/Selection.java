@@ -37,7 +37,7 @@ public class Selection {
             input = captureUserInput("restock all or one?");
             if (input.equals("all")) {
                 String brand = captureUserInput("brand?");
-                int toAdd = 20 - inventory.getInventorySizeByInt();
+                int toAdd = 5 - inventory.getInventorySizeByInt();
                 inventory.addMultipleSodas(toAdd, brand);
             }
             else if (input.equals("one")) {
