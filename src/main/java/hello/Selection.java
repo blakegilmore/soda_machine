@@ -31,17 +31,18 @@ public class Selection {
         selected = true;
         String input = captureUserInput("add or remove?");
         if (input.equals("add")) {
-            input = captureUserInput("all, multiple, or one?");
+            input = captureUserInput("restock all, multiple, or one?");
             if (input.equals("all")) {
-                /// calculate the difference between a full rack of 20
-                // and the number currently in the rack
-                /// call method that loops through add soda for each number needed to be added
+                String brand = captureUserInput("brand?");
+                int toAdd = 20 - inventory.getInventorySizeByInt();
+                inventory.addMultipleSodas(toAdd, brand);
             }
         } else if (input.equals("one")){
             input = captureUserInput("add or remove?");
             if (input.equals("add")) {
                 input = captureUserInput("brand?");
                 inventory.addSoda(input);
+                inventory.getInventoryByBrand();
             }
             if (input.equals("remove")) {
                 input = captureUserInput("position?");

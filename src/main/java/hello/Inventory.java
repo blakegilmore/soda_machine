@@ -55,6 +55,13 @@ public class Inventory {
     public void addSoda(String brand){
         inventory.add(new Soda(brand));
         System.out.println("Added " + inventory.get(inventory.size()-1).brand);
+    }
+
+    /// method that refills the stock by adding the number of sodas needed for the rack to be filled
+    public void addMultipleSodas(int toAdd, String brand){
+        for (int i = 0;i<toAdd;i++){
+            addSoda(brand);
+        }
         getInventoryByBrand();
     }
 
