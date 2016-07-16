@@ -51,6 +51,17 @@ public class Inventory {
         return inventory.get(pos);
     }
 
+    boolean checkInventoryForSelection(String input,boolean selected){
+        Selection selection = new Selection();
+        for (int i = 0; i < getInventorySizeByInt(); i++) {
+            if (getValueFromIndex(i).brand.equals(input)) {
+                selection.dispenseDrink(input);
+                selected = true;
+            }
+        }
+        return selected;
+    }
+
     public void removeSodasById(ArrayList<Integer> input) {
         for (int i : input) {
             //// loop through the inventory to find the id that matches the element

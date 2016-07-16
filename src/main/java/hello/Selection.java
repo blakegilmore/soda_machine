@@ -18,9 +18,10 @@ public class Selection {
             String input = captureUserInput("Please choose A (Pepsi) or B (Coke)");
             input = changeNames(input);
             if (input.equals("inventory")) { inventory.manipulateInventory(); selected = true; }
-            checkInventoryForSelection(input);
+            selected = inventory.checkInventoryForSelection(input,selected);
             if (input.equals("off")) { on = false; }
             if (selected == false) {
+                System.out.println("You hit selected -- false");
                 System.out.println("Unavailable, please make a different selection.");
                 System.out.println("\n");
             }
@@ -51,11 +52,4 @@ public class Selection {
         return input;
     }
 
-    void checkInventoryForSelection(String input){
-        for (int i = 0; i < inventory.getInventorySizeByInt(); i++) {
-            if (inventory.getValueFromIndex(i).brand.equals(input)) {
-                dispenseDrink(input);
-            }
-        }
-    }
 }
