@@ -13,7 +13,8 @@ public class PaymentService {
         Selection selection = new Selection();
         boolean moreMoneyNeeded = true;
         while (moreMoneyNeeded == true) {
-            String input = selection.captureUserInput("$"+amountNeeded+"0 please: D for dollars, Q for quarters");
+            System.out.println("Cost = $1.50");
+            String input = selection.captureUserInput("(D for dollars, Q for quarters)");
             input = changeToMoney(input);
             amountNeeded = amountNeeded - Double.parseDouble(input);
             if (amountNeeded > 0) {
