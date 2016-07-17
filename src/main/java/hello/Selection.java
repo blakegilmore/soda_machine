@@ -1,7 +1,5 @@
 package hello;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 /**
  * Created by blakegilmore on 7/14/16.
@@ -17,19 +15,20 @@ public class Selection {
             selected = false;
             String input = captureUserInput("Please choose A (Pepsi) or B (Coke)");
             input = changeNames(input);
+            String brand = input;
+            selected = inventory.checkInventoryForSelection(input,selected,brand);
             if (input.equals("inventory")) { inventory.manipulateInventory(); selected = true; }
-            selected = inventory.checkInventoryForSelection(input,selected);
             if (input.equals("off")) { on = false; }
             if (selected == false) {
-                System.out.println("You hit selected -- false");
                 System.out.println("Unavailable, please make a different selection.");
                 System.out.println("\n");
             }
         }
     }
 
-    void dispenseDrink(String input){
+    void dispenseDrink(String input,String brand){
         selected = true;
+        inventory.removeSodaByBrand(brand);
         System.out.println("Here is your drink");
         System.out.println("|\n|");
         System.out.println("|\n");

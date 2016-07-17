@@ -1,5 +1,6 @@
 package hello;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,12 +52,13 @@ public class Inventory {
         return inventory.get(pos);
     }
 
-    boolean checkInventoryForSelection(String input,boolean selected){
+    boolean checkInventoryForSelection(String input, boolean selected, String brand){
         Selection selection = new Selection();
         for (int i = 0; i < getInventorySizeByInt(); i++) {
             if (getValueFromIndex(i).brand.equals(input)) {
-                selection.dispenseDrink(input);
+                selection.dispenseDrink(input,brand);
                 selected = true;
+                return selected;
             }
         }
         return selected;
@@ -97,6 +99,15 @@ public class Inventory {
         return;
     }
 
+    public void removeSodaByBrand(String brand){
+        for(int i = 0;i < inventory.size();i++){
+            if(inventory.get(i).brand == brand){
+                removeSoda(i);
+                break;
+            }
+        }
+    }
+
     public void removeAll() {
         int sizeOfInventory = inventory.size();
         for (int i = sizeOfInventory - 1; i > -1; i--) {
@@ -114,7 +125,7 @@ public class Inventory {
             input = selection.captureUserInput("restock all or one?");
             if (input.equals("all")) {
                 String brand = selection.captureUserInput("brand?");
-                int toAdd = 5 - getInventorySizeByInt();
+                int toAdd = 20 - getInventorySizeByInt();
                 addMultipleSodas(toAdd, brand);
             } else if (input.equals("one")) {
                 String brand = selection.captureUserInput("brand?");
@@ -149,4 +160,5 @@ public class Inventory {
 
 
     }
+
 }
