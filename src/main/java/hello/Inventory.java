@@ -9,6 +9,7 @@ import java.util.List;
  */
 public class Inventory {
     List<Soda> inventory = new ArrayList<Soda>();
+    PaymentService payments = new PaymentService();
 
     Inventory() {
         this.inventory.add(new Soda("Coke"));
@@ -56,8 +57,8 @@ public class Inventory {
         Selection selection = new Selection();
         for (int i = 0; i < getInventorySizeByInt(); i++) {
             if (getValueFromIndex(i).brand.equals(input)) {
-                selection.dispenseDrink(input,brand);
                 selected = true;
+                payments.makePayment(brand);
                 return selected;
             }
         }

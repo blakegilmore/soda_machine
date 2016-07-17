@@ -14,7 +14,7 @@ public class Selection {
         while (on == true) {
             selected = false;
             String input = captureUserInput("Please choose A (Pepsi) or B (Coke)");
-            input = changeNames(input);
+            input = changeSodaNames(input);
             String brand = input;
             selected = inventory.checkInventoryForSelection(input,selected,brand);
             if (input.equals("inventory")) { inventory.manipulateInventory(); selected = true; }
@@ -26,18 +26,18 @@ public class Selection {
         }
     }
 
-    void dispenseDrink(String input,String brand){
+    void dispenseDrink(String brand){
         selected = true;
         inventory.removeSodaByBrand(brand);
         System.out.println("Here is your drink");
         System.out.println("|\n|");
         System.out.println("|\n");
-        System.out.println(input);
+        System.out.println(brand);
         System.out.println("\n");
         return;
     }
 
-    String changeNames(String input){
+    String changeSodaNames(String input){
         if (input.equals("A"))
             input = "Pepsi";
         if (input.equals("B"))
