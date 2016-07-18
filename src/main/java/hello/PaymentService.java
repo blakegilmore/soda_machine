@@ -11,8 +11,10 @@ public class PaymentService {
 
     void makePayment(String brand) {
         Selection selection = new Selection();
+        Currency currency = new Currency();
         boolean moreMoneyNeeded = true;
         while (moreMoneyNeeded == true) {
+            currency.in
             System.out.println("Cost = $1.50");
             String input = selection.captureUserInput("(D for dollars, Q for quarters)");
             input = changeToMoney(input);
