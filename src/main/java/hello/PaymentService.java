@@ -10,24 +10,9 @@ public class PaymentService {
     double amountNeeded = 1.50;
 
     void makePayment(String brand) {
-        Selection selection = new Selection();
         Currency currency = new Currency();
-        boolean moreMoneyNeeded = true;
-        while (moreMoneyNeeded == true) {
-            currency.insertMoney();
-            System.out.println("Cost = $1.50");
-            String input = selection.captureUserInput("(D for dollars, Q for quarters)");
-            input = changeToMoney(input);
-            amountNeeded = amountNeeded - Double.parseDouble(input);
-            if (amountNeeded > 0) {
-                System.out.println("Please add $" + amountNeeded);
-            }
-            if (amountNeeded <= 0) {
-                selection.dispenseDrink(brand);
-                moreMoneyNeeded = false;
-            }
+        currency.insertMoney(brand);
         }
-    }
 
     String changeToMoney(String input) {
         if (input.equals("D"))
@@ -37,4 +22,29 @@ public class PaymentService {
         else { System.out.println("Please enter dollars or quarters"); input = "0.0"; }
         return input;
     }
+
+    public void payWithCash(String brand) {
+        Selection selection = new Selection();
+        while(amountNeeded >= 0) {
+            System.out.println("Cost = $1.50");
+            String input = selection.captureUserInput("(D for dollars, Q for quarters)");
+            input = changeToMoney(input);
+            amountNeeded = amountNeeded - Double.parseDouble(input);
+            if (amountNeeded > 0) {
+                System.out.println("Please add $" + amountNeeded);
+            }
+            if (amountNeeded <= 0) {
+                selection.dispenseDrink(brand);
+            }
+        }
+    }
+
+    public void payWithCard(String brand) {
+        Selection selection = new Selection();
+        System.out.println("Cost = $1.50");
+        System.out.println("type 'swipe' when ready");
+        selection.dispenseDrink(brand);
+        return;
+        }
 }
+
