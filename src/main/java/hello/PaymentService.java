@@ -9,10 +9,14 @@ public class PaymentService {
     Scanner scanner = new Scanner(System.in).useDelimiter("\n");
     double amountNeeded = 1.50;
 
-    void makePayment(String brand) {
+    void makePayment(String brand) throws InterruptedException {
         Currency currency = new Currency();
-        currency.insertMoney(brand);
+        try {
+            currency.insertMoney(brand);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
+    }
 
     String changeToMoney(String input) {
         if (input.equals("D"))
@@ -39,10 +43,14 @@ public class PaymentService {
         }
     }
 
-    public void payWithCard(String brand) {
+    public void payWithCard(String brand) throws InterruptedException {
         Selection selection = new Selection();
         System.out.println("Cost = $1.50");
-        System.out.println("type 'swipe' when ready");
+        String input = selection.captureUserInput("Enter any key twice to charge your card");
+        if(scanner.hasNext()){
+            System.out.println("Charging your card...");
+            Thread.sleep(2000);
+        }
         selection.dispenseDrink(brand);
         return;
         }

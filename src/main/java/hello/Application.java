@@ -5,7 +5,7 @@ package hello;
  */
 public class Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         Selection mySelection = new Selection();
         mySelection.selectSoda();
     }

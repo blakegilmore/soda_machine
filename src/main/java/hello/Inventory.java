@@ -47,7 +47,7 @@ public class Inventory {
         return inventory.get(pos);
     }
 
-    boolean checkInventoryForSelection(boolean selected, String brand){
+    boolean checkInventoryForSelection(boolean selected, String brand) throws InterruptedException {
         for(int i = 0;i < inventory.size();i++) {
             if (inventory.get(i).brand == brand) {
                 payments.makePayment(brand);

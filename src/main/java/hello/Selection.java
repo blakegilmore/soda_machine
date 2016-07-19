@@ -10,7 +10,7 @@ public class Selection {
     boolean selected = false;
     Inventory inventory = new Inventory();
 
-    void selectSoda() {
+    void selectSoda() throws InterruptedException {
         while (on == true) {
             selected = false;
             String input = captureUserInput("Please choose A (Pepsi) or B (Coke)");
@@ -31,7 +31,7 @@ public class Selection {
     void dispenseDrink(String brand){
         selected = true;
         inventory.removeSodaByBrand(brand);
-        System.out.println("Here is your drink |\n||\n| "+ brand +"\n");
+        System.out.println("Here is your drink \n |\n |\n |\n"+ brand +"\n");
     }
 
     String changeSodaNames(String input){
