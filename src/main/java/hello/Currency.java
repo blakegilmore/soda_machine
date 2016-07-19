@@ -6,31 +6,20 @@ package hello;
 
 
 public class Currency {
-        public enum CurrencyChoice {
-                CASH, CARD
-        }
-
-        Currency currency;
-
-        public Currency(Currency currency) {
-                this.currency = currency;
-        }
+        Selection selection = new Selection();
 
         public void insertMoney() {
-
-                switch (currency) {
-                        case CurrencyChoice.CARD:
-                                System.out.println("Mondays are bad.");
-                                break;
-
-                        case CurrencyChoice.CASH:
-                                System.out.println("Fridays are better.");
-                                break;
-
-                        default:
-                                System.out.println("Midweek days are so-so.");
-                                break;
+                String input = selection.captureUserInput("cash or card?");
+                if (input.equals("cash")) {
+                        System.out.println("Mondays are bad.");
+                }
+                else if (input.equals("card")){
+                        System.out.println("Fridays are better.");
+                }
+                else {
+                        System.out.println("Must enter card or cash.");
                 }
                 return;
         }
+
 }

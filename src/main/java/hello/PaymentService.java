@@ -14,7 +14,7 @@ public class PaymentService {
         Currency currency = new Currency();
         boolean moreMoneyNeeded = true;
         while (moreMoneyNeeded == true) {
-            currency.in
+            currency.insertMoney();
             System.out.println("Cost = $1.50");
             String input = selection.captureUserInput("(D for dollars, Q for quarters)");
             input = changeToMoney(input);
