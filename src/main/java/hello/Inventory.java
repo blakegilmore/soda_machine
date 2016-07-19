@@ -1,31 +1,24 @@
 package hello;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Created by blakegilmore on 7/13/16.
  */
 public class Inventory {
-    List<Soda> inventory = new ArrayList<Soda>();
+    Map<Integer,Soda> inventory = new HashMap<Integer,Soda>();
     PaymentService payments = new PaymentService();
 
     Inventory() {
-        this.inventory.add(new Soda("Coke"));
-        this.inventory.add(new Soda("Pepsi"));
-        this.inventory.add(new Soda("Coke"));
-        this.inventory.add(new Soda("Coke"));
-        this.inventory.add(new Soda("Pepsi"));
-    }
-
-    public List<Soda> getInventory() {
-        return inventory;
-    }
-
-    public Inventory setInventory(List<Soda> inventory) {
-        this.inventory = inventory;
-        return this;
+        this.inventory.put(0, new Soda("Coke"));
+        this.inventory.put(1, new Soda("Pepsi"));
+        this.inventory.put(2, new Soda("Coke"));
+        this.inventory.put(3, new Soda("Coke"));
+        this.inventory.put(4, new Soda("Pepsi"));
     }
 
     public List<String> getInventoryByBrand() {
@@ -50,20 +43,22 @@ public class Inventory {
         if (pos >= inventory.size()) {
             throw new IndexOutOfBoundsException();
         }
+        System.out.println(inventory.get(pos)+" - I am the inventory at this particular position which is "+pos);
         return inventory.get(pos);
     }
 
-    boolean checkInventoryForSelection(String input, boolean selected, String brand){
-        Selection selection = new Selection();
-        for (int i = 0; i < getInventorySizeByInt(); i++) {
-            if (getValueFromIndex(i).brand.equals(input)) {
-                selected = true;
+    boolean checkInventoryForSelection(boolean selected, String brand){
+        for(int i = 0;i < inventory.size();i++) {
+            if (inventory.get(i).brand == brand) {
                 payments.makePayment(brand);
-                return selected;
+                selected = true;
+                System.out.println(selected);
             }
         }
+        System.out.println(selected);
         return selected;
     }
+
 
     public void removeSodasById(ArrayList<Integer> input) {
         for (int i : input) {
@@ -78,7 +73,7 @@ public class Inventory {
     }
 
     public void addSoda(String brand) {
-        inventory.add(new Soda(brand));
+        inventory.put(inventory.size()-1, new Soda(brand));
         System.out.println("Added " + inventory.get(inventory.size() - 1).brand);
     }
 
@@ -136,6 +131,7 @@ public class Inventory {
                 System.out.println("\n");
             }
         }
+
         if (input.equals("remove")) {
             input = selection.captureUserInput("remove all, multiple, or one?");
             if (input.equals("all")) {
