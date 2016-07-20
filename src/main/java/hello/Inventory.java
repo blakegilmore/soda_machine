@@ -12,6 +12,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class Inventory {
     Map<Integer,Soda> inventory = new HashMap<Integer,Soda>();
     PaymentService payments = new PaymentService();
+    int numRemoved = 0;
 
     Inventory() {
         this.inventory.put(0, new Soda("Coke"));
@@ -23,7 +24,9 @@ public class Inventory {
 
     public List<String> getInventoryByBrand() {
         List<String> inventoryByBrand = new ArrayList<String>();
-        for (int i = 0; i < inventory.size(); i++) {
+        if(numRemoved>5){ numRemoved = 5; }
+        for (int i = 0; i < inventory.size()+numRemoved; i++) {
+            System.out.println(inventory.get(i)+"I am i: "+i);
             if(inventory.get(i)!=null) {
                 inventoryByBrand.add(inventory.get(i).brand);
             } else {
@@ -63,6 +66,7 @@ public class Inventory {
 
 
     public void removeSodasById(ArrayList<Integer> input) throws InterruptedException {
+        numRemoved = numRemoved + (input.size());
         for (int i : input) {
             //// loop through the inventory to find the id that matches the element
             for (int j = 0; j < inventory.size(); j++) {
@@ -86,19 +90,20 @@ public class Inventory {
         getInventoryByBrand();
     }
 
-    public void restockSodas(){
-        for(int i = 0;i<5;i++){
-            if(inventory.get(i) == null){
-                addSoda("Coke",i);
-            }
-        }
-    }
+//    public void restockSodas(){
+//        for(int i = 0;i<5;i++){
+//            if(inventory.get(i) == null){
+//                addSoda("Coke",i);
+//            }
+//        }
+//    }
 
     public void removeSoda(int pos) throws InterruptedException {
         if (pos < inventory.size()) {
             System.out.println("Removing " + inventory.get(pos).brand+"...");
             Thread.sleep(1000);
             inventory.remove(pos);
+            numRemoved++;
         } else {
             System.out.println("That item doesn't exist.");
         }
@@ -106,12 +111,11 @@ public class Inventory {
     }
 
     public void removeSodaByBrand(String brand) throws InterruptedException {
-        for(int i = 0;i < inventory.size();i++){
-            if(inventory.get(i).brand == brand){
-                removeSoda(i);
-                break;
+            for (int i = 0; i < inventory.size(); i++) {
+                if (inventory.get(i).brand == brand) {
+                    removeSoda(i);
+                }
             }
-        }
     }
 
     public void removeAll() throws InterruptedException {
@@ -147,7 +151,7 @@ public class Inventory {
                 removeAll();
                 System.out.println("No more sodas :( ");
                 getInventoryByBrand();
-                restockSodas();
+//                restockSodas();
             }
             else if (input.equals("multiple")) {
                 ArrayList<Integer> sodaList = new ArrayList<Integer>();
@@ -160,12 +164,12 @@ public class Inventory {
                     sodaList.add(id);
                 }
                 removeSodasById(sodaList);
-                restockSodas();
+//                restockSodas();
             }
             else if (input.equals("one")) {
                 input = selection.captureUserInput("position?");
                 removeSoda(Integer.parseInt(input));
-                restockSodas();
+//                restockSodas();
             } else {
                 System.out.println("Unavailable, please make a different selection.");
                 System.out.println("\n");
