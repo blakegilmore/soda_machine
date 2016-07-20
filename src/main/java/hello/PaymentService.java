@@ -18,16 +18,16 @@ public class PaymentService {
         }
     }
 
-    String changeToMoney(String input) {
+    String changeToMoney(String input) throws InterruptedException {
         if (input.equals("D"))
             input = "1.0";
         else if (input.equals("Q"))
             input = ".25";
-        else { System.out.println("Please enter dollars or quarters"); input = "0.0"; }
+        else { System.out.println("Please enter dollars or quarters"); input = "0.0"; Thread.sleep(1500); }
         return input;
     }
 
-    public void payWithCash(String brand) {
+    public void payWithCash(String brand) throws InterruptedException {
         Selection selection = new Selection();
         while(amountNeeded >= 0) {
             System.out.println("Cost = $1.50");
@@ -39,6 +39,7 @@ public class PaymentService {
             }
             if (amountNeeded <= 0) {
                 selection.dispenseDrink(brand);
+                amountNeeded = -1;
             }
         }
     }
@@ -49,7 +50,7 @@ public class PaymentService {
         String input = selection.captureUserInput("Enter any key twice to charge your card");
         if(scanner.hasNext()){
             System.out.println("Charging your card...");
-            Thread.sleep(2000);
+            Thread.sleep(1500);
         }
         selection.dispenseDrink(brand);
         return;

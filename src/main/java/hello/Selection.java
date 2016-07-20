@@ -17,7 +17,6 @@ public class Selection {
             input = changeSodaNames(input);
             String brand = input;
             selected = inventory.checkInventoryForSelection(selected,brand);
-            System.out.println(selected);
             if (input.equals("inventory")) { inventory.manipulateInventory(); selected = true; }
             if (input.equals("off")) { on = false; }
             if (selected == false) {
@@ -28,10 +27,11 @@ public class Selection {
     }
 
 
-    void dispenseDrink(String brand){
+    void dispenseDrink(String brand) throws InterruptedException {
         selected = true;
         inventory.removeSodaByBrand(brand);
-        System.out.println("Here is your drink \n |\n |\n |\n"+ brand +"\n");
+        System.out.println("\n |\n |\n |\n"+ brand +"\n");
+        Thread.sleep(1500);
     }
 
     String changeSodaNames(String input){

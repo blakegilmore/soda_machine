@@ -52,15 +52,14 @@ public class Inventory {
             if (inventory.get(i).brand == brand) {
                 payments.makePayment(brand);
                 selected = true;
-                System.out.println(selected);
+                return selected;
             }
         }
-        System.out.println(selected);
         return selected;
     }
 
 
-    public void removeSodasById(ArrayList<Integer> input) {
+    public void removeSodasById(ArrayList<Integer> input) throws InterruptedException {
         for (int i : input) {
             //// loop through the inventory to find the id that matches the element
             for (int j = 0; j < inventory.size(); j++) {
@@ -85,9 +84,10 @@ public class Inventory {
         getInventoryByBrand();
     }
 
-    public void removeSoda(int pos) {
+    public void removeSoda(int pos) throws InterruptedException {
         if (pos < inventory.size()) {
-            System.out.println("Removed " + inventory.get(pos).brand);
+            System.out.println("Removing " + inventory.get(pos).brand+"...");
+            Thread.sleep(1000);
             inventory.remove(pos);
         } else {
             System.out.println("That item doesn't exist.");
@@ -95,7 +95,7 @@ public class Inventory {
         return;
     }
 
-    public void removeSodaByBrand(String brand){
+    public void removeSodaByBrand(String brand) throws InterruptedException {
         for(int i = 0;i < inventory.size();i++){
             if(inventory.get(i).brand == brand){
                 removeSoda(i);
@@ -104,14 +104,14 @@ public class Inventory {
         }
     }
 
-    public void removeAll() {
+    public void removeAll() throws InterruptedException {
         int sizeOfInventory = inventory.size();
         for (int i = sizeOfInventory - 1; i > -1; i--) {
             removeSoda(0);
         }
     }
 
-    void manipulateInventory() {
+    void manipulateInventory() throws InterruptedException {
         Selection selection = new Selection();
         String input = selection.captureUserInput("view, add, or remove?");
         if (input.equals("view")) {
