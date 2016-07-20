@@ -14,11 +14,13 @@ public class Selection {
         while (on == true) {
             selected = false;
             String input = captureUserInput("Please choose A (Pepsi) or B (Coke)");
-            input = changeSodaNames(input);
-            String brand = input;
-            selected = inventory.checkInventoryForSelection(selected,brand);
-            if (input.equals("inventory")) { inventory.manipulateInventory(); selected = true; }
-            if (input.equals("off")) { on = false; }
+            if (input.equals("A") || input.equals("B")){
+                input = changeSodaNames(input);
+                String brand = input;
+                selected = inventory.checkInventoryForSelection(selected,brand);
+            }
+            else if (input.equals("inventory")) { inventory.manipulateInventory(); selected = true; }
+            else if (input.equals("off")) { on = false; }
             if (selected == false) {
                 System.out.println("Unavailable, please make a different selection.");
                 System.out.println("\n");

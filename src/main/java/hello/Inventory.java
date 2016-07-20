@@ -24,7 +24,11 @@ public class Inventory {
     public List<String> getInventoryByBrand() {
         List<String> inventoryByBrand = new ArrayList<String>();
         for (int i = 0; i < inventory.size(); i++) {
-            inventoryByBrand.add(inventory.get(i).brand);
+            if(inventory.get(i)!=null) {
+                inventoryByBrand.add(inventory.get(i).brand);
+            } else {
+                inventoryByBrand.add("[]");
+            }
         }
         System.out.println(inventoryByBrand);
         return inventoryByBrand;
@@ -43,7 +47,6 @@ public class Inventory {
         if (pos >= inventory.size()) {
             throw new IndexOutOfBoundsException();
         }
-        System.out.println(inventory.get(pos)+" - I am the inventory at this particular position which is "+pos);
         return inventory.get(pos);
     }
 
@@ -71,17 +74,24 @@ public class Inventory {
         return;
     }
 
-    public void addSoda(String brand) {
-        inventory.put(inventory.size()-1, new Soda(brand));
-        System.out.println("Added " + inventory.get(inventory.size() - 1).brand);
+    public void addSoda(String brand,int i) {
+        inventory.put(i, new Soda(brand));
     }
 
     /// method that refills the stock by adding the number of sodas needed for the rack to be filled
     public void addMultipleSodas(int toAdd, String brand) {
         for (int i = 0; i < toAdd; i++) {
-            addSoda(brand);
+            addSoda(brand,inventory.size());
         }
         getInventoryByBrand();
+    }
+
+    public void restockSodas(){
+        for(int i = 0;i<5;i++){
+            if(inventory.get(i) == null){
+                addSoda("Coke",i);
+            }
+        }
     }
 
     public void removeSoda(int pos) throws InterruptedException {
@@ -107,7 +117,7 @@ public class Inventory {
     public void removeAll() throws InterruptedException {
         int sizeOfInventory = inventory.size();
         for (int i = sizeOfInventory - 1; i > -1; i--) {
-            removeSoda(0);
+            removeSoda(i);
         }
     }
 
@@ -125,7 +135,7 @@ public class Inventory {
                 addMultipleSodas(toAdd, brand);
             } else if (input.equals("one")) {
                 String brand = selection.captureUserInput("brand?");
-                addSoda(brand);
+                addSoda(brand,inventory.size());
             } else {
                 System.out.println("Unavailable, please make a different selection.");
                 System.out.println("\n");
@@ -135,8 +145,11 @@ public class Inventory {
             input = selection.captureUserInput("remove all, multiple, or one?");
             if (input.equals("all")) {
                 removeAll();
+                System.out.println("No more sodas :( ");
+                getInventoryByBrand();
+                restockSodas();
             }
-            if (input.equals("multiple")) {
+            else if (input.equals("multiple")) {
                 ArrayList<Integer> sodaList = new ArrayList<Integer>();
                 int numberToRemove = Integer.parseInt(selection.captureUserInput("how many sodas do you want to remove?"));
                 if (numberToRemove > getInventorySizeByInt()) {
@@ -147,10 +160,16 @@ public class Inventory {
                     sodaList.add(id);
                 }
                 removeSodasById(sodaList);
+                restockSodas();
             }
-            if (input.equals("one")) {
+            else if (input.equals("one")) {
                 input = selection.captureUserInput("position?");
                 removeSoda(Integer.parseInt(input));
+                restockSodas();
+            } else {
+                System.out.println("Unavailable, please make a different selection.");
+                System.out.println("\n");
+                manipulateInventory();
             }
         }
         else {
