@@ -117,7 +117,7 @@ public class Inventory {
         if (input.equals("view")) {
             getInventoryByBrand();
         }
-        if (input.equals("add")) {
+        else if (input.equals("add")) {
             input = selection.captureUserInput("restock all or one?");
             if (input.equals("all")) {
                 String brand = selection.captureUserInput("brand?");
@@ -131,8 +131,7 @@ public class Inventory {
                 System.out.println("\n");
             }
         }
-
-        if (input.equals("remove")) {
+        else if (input.equals("remove")) {
             input = selection.captureUserInput("remove all, multiple, or one?");
             if (input.equals("all")) {
                 removeAll();
@@ -153,6 +152,11 @@ public class Inventory {
                 input = selection.captureUserInput("position?");
                 removeSoda(Integer.parseInt(input));
             }
+        }
+        else {
+            System.out.println("Unavailable, please make a different selection.");
+            System.out.println("\n");
+            manipulateInventory();
         }
 
 
