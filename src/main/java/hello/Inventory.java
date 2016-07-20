@@ -26,11 +26,10 @@ public class Inventory {
         List<String> inventoryByBrand = new ArrayList<String>();
         if(numRemoved>5){ numRemoved = 5; }
         for (int i = 0; i < inventory.size()+numRemoved; i++) {
-            System.out.println(inventory.get(i)+"I am i: "+i);
             if(inventory.get(i)!=null) {
                 inventoryByBrand.add(inventory.get(i).brand);
             } else {
-                inventoryByBrand.add("[]");
+                inventoryByBrand.add("__");
             }
         }
         System.out.println(inventoryByBrand);
@@ -141,8 +140,7 @@ public class Inventory {
                 String brand = selection.captureUserInput("brand?");
                 addSoda(brand,inventory.size());
             } else {
-                System.out.println("Unavailable, please make a different selection.");
-                System.out.println("\n");
+                System.out.println("Unavailable, please make a different selection.\n");
             }
         }
         else if (input.equals("remove")) {
@@ -171,14 +169,12 @@ public class Inventory {
                 removeSoda(Integer.parseInt(input));
 //                restockSodas();
             } else {
-                System.out.println("Unavailable, please make a different selection.");
-                System.out.println("\n");
+                System.out.println("Unavailable, please make a different selection.\n");
                 manipulateInventory();
             }
         }
         else {
-            System.out.println("Unavailable, please make a different selection.");
-            System.out.println("\n");
+            System.out.println("Unavailable, please make a different selection.\n");
             manipulateInventory();
         }
 
