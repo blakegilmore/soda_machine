@@ -32,7 +32,7 @@ public class Inventory {
                 inventoryByBrand.add("__");
             }
         }
-        System.out.println(inventoryByBrand);
+        System.out.println("\nCurrent inventory :\n\n"+inventoryByBrand+"\n");
         return inventoryByBrand;
     }
 
@@ -77,8 +77,37 @@ public class Inventory {
         return;
     }
 
+    public void removeSodasByKey(ArrayList<Integer> input) throws InterruptedException {
+        numRemoved = numRemoved + (input.size());
+        for(int i : input) {
+            System.out.println("Removing " + inventory.get(i).brand+"...");
+            inventory.remove(i);
+            Thread.sleep(1000);
+            numRemoved++;
+        }
+        Thread.sleep(1000);
+        getInventoryByBrand();
+        return;
+    }
+
     public void addSoda(String brand,int i) {
         inventory.put(i, new Soda(brand));
+    }
+
+    public void addSelection(){
+        Selection selection = new Selection();
+        String input = selection.captureUserInput("restock all or one?");
+        if (input.equals("all")) {
+            String brand = selection.captureUserInput("brand?");
+            int toAdd = 20 - getInventorySizeByInt();
+            addMultipleSodas(toAdd, brand);
+        } else if (input.equals("one")) {
+            String brand = selection.captureUserInput("brand?");
+            addSoda(brand,inventory.size());
+            System.out.println("Added "+brand);
+        } else {
+            System.out.println("Unavailable, please make a different selection.\n");
+        }
     }
 
     /// method that refills the stock by adding the number of sodas needed for the rack to be filled
@@ -89,13 +118,6 @@ public class Inventory {
         getInventoryByBrand();
     }
 
-//    public void restockSodas(){
-//        for(int i = 0;i<5;i++){
-//            if(inventory.get(i) == null){
-//                addSoda("Coke",i);
-//            }
-//        }
-//    }
 
     public void removeSoda(int pos) throws InterruptedException {
         if (pos < inventory.size()) {
@@ -117,11 +139,53 @@ public class Inventory {
             }
     }
 
+    public void removeMultiple() throws InterruptedException {
+        Selection selection = new Selection();
+        ArrayList<Integer> sodaList = new ArrayList<Integer>();
+        int numberToRemove = Integer.parseInt(selection.captureUserInput("how many sodas do you want to remove?"));
+        if (numberToRemove > getInventorySizeByInt()) {
+            numberToRemove = getInventorySizeByInt();
+        }
+        for (int x = 0; x < numberToRemove; x++) {
+            int id = Integer.parseInt(selection.captureUserInput("id of soda:"));
+            sodaList.add(id);
+        }
+        try {
+            removeSodasByKey(sodaList);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void removeSelection() throws InterruptedException {
+        Selection selection = new Selection();
+        String input = selection.captureUserInput("remove all, multiple, or one?");
+        if (input.equals("all")) {
+            try {
+                removeAll();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        else if (input.equals("multiple")) {
+            removeMultiple();
+        }
+        else if (input.equals("one")) {
+            input = selection.captureUserInput("position?");
+            removeSoda(Integer.parseInt(input));
+        } else {
+            System.out.println("Unavailable, please make a different selection.\n");
+            manipulateInventory();
+        }
+    }
+
     public void removeAll() throws InterruptedException {
         int sizeOfInventory = inventory.size();
         for (int i = sizeOfInventory - 1; i > -1; i--) {
             removeSoda(i);
         }
+        System.out.println("No more sodas :( ");
+        getInventoryByBrand();
     }
 
     void manipulateInventory() throws InterruptedException {
@@ -131,47 +195,10 @@ public class Inventory {
             getInventoryByBrand();
         }
         else if (input.equals("add")) {
-            input = selection.captureUserInput("restock all or one?");
-            if (input.equals("all")) {
-                String brand = selection.captureUserInput("brand?");
-                int toAdd = 20 - getInventorySizeByInt();
-                addMultipleSodas(toAdd, brand);
-            } else if (input.equals("one")) {
-                String brand = selection.captureUserInput("brand?");
-                addSoda(brand,inventory.size());
-            } else {
-                System.out.println("Unavailable, please make a different selection.\n");
-            }
+            addSelection();
         }
         else if (input.equals("remove")) {
-            input = selection.captureUserInput("remove all, multiple, or one?");
-            if (input.equals("all")) {
-                removeAll();
-                System.out.println("No more sodas :( ");
-                getInventoryByBrand();
-//                restockSodas();
-            }
-            else if (input.equals("multiple")) {
-                ArrayList<Integer> sodaList = new ArrayList<Integer>();
-                int numberToRemove = Integer.parseInt(selection.captureUserInput("how many sodas do you want to remove?"));
-                if (numberToRemove > getInventorySizeByInt()) {
-                    numberToRemove = getInventorySizeByInt();
-                }
-                for (int x = 0; x < numberToRemove; x++) {
-                    int id = Integer.parseInt(selection.captureUserInput("id of soda:"));
-                    sodaList.add(id);
-                }
-                removeSodasById(sodaList);
-//                restockSodas();
-            }
-            else if (input.equals("one")) {
-                input = selection.captureUserInput("position?");
-                removeSoda(Integer.parseInt(input));
-//                restockSodas();
-            } else {
-                System.out.println("Unavailable, please make a different selection.\n");
-                manipulateInventory();
-            }
+            removeSelection();
         }
         else {
             System.out.println("Unavailable, please make a different selection.\n");
