@@ -4,11 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.atomic.AtomicInteger;
 
-/**
- * Created by blakegilmore on 7/13/16.
- */
 public class Inventory {
     Map<Integer,Soda> inventory = new HashMap<Integer,Soda>();
     PaymentService payments = new PaymentService();
@@ -61,20 +57,6 @@ public class Inventory {
             }
         }
         return selected;
-    }
-
-
-    public void removeSodasById(ArrayList<Integer> input) throws InterruptedException {
-        numRemoved = numRemoved + (input.size());
-        for (int i : input) {
-            //// loop through the inventory to find the id that matches the element
-            for (int j = 0; j < inventory.size(); j++) {
-                if (inventory.get(j).id == i) {
-                    removeSoda(j);
-                }
-            }
-        }
-        return;
     }
 
     public void removeSodasByKey(ArrayList<Integer> input) throws InterruptedException {
@@ -191,20 +173,13 @@ public class Inventory {
     void manipulateInventory() throws InterruptedException {
         Selection selection = new Selection();
         String input = selection.captureUserInput("view, add, or remove?");
-        if (input.equals("view")) {
-            getInventoryByBrand();
+        System.out.println(input);
+        switch (input){
+            case "view": getInventoryByBrand(); break;
+            case "add": addSelection(); break;
+            case "remove": removeSelection(); break;
+            default: System.out.println("Unavailable, please make a different selection.\n"); manipulateInventory();
         }
-        else if (input.equals("add")) {
-            addSelection();
-        }
-        else if (input.equals("remove")) {
-            removeSelection();
-        }
-        else {
-            System.out.println("Unavailable, please make a different selection.\n");
-            manipulateInventory();
-        }
-
 
     }
 
