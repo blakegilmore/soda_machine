@@ -12,6 +12,13 @@ public class Soda {
         this.id = count.incrementAndGet();
     }
 
+    Soda(String brand,int id,double price) {
+        this.brand = brand;
+        this.id = id;
+        this.price = price;
+    }
+
+
     String brand;
     double price;
     private static final AtomicInteger count = new AtomicInteger(0);
