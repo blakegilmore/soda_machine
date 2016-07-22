@@ -18,6 +18,10 @@ public class Inventory {
         this.inventory.put(4, new Soda("Pepsi"));
     }
 
+    Inventory(Integer inty,Soda soda){
+        this.inventory.put(inty, soda);
+    }
+
     public List<String> getInventoryByBrand() {
         List<String> inventoryByBrand = new ArrayList<String>();
         if(numRemoved>5){ numRemoved = 5; }
