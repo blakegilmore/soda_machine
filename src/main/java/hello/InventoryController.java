@@ -18,9 +18,13 @@ public class InventoryController {
 
     @RequestMapping(value = "/updateSoda", method = RequestMethod.PATCH)
     public @ResponseBody Soda updateSoda(@RequestParam(value="newBrand", defaultValue="Coke") String newBrand){
-        return new Soda("Pepsi");
+        return new Soda(newBrand);
     }
 
+//    @RequestMapping(value = "/addSoda", method = RequestMethod.POST)
+//    public @ResponseBody Soda updateSoda(@RequestParam(value="newBrand", defaultValue="Coke") String newBrand){
+//        return new Soda(newBrand);
+//    } 
 
 
     private Soda convertBrand(String newBrand, Soda soda){

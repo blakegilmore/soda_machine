@@ -6,6 +6,17 @@ import java.util.concurrent.atomic.AtomicInteger;
  * Created by blakegilmore on 7/13/16.
  */
 public class Soda {
+    Soda(String brand){
+        this.brand = brand;
+        this.price = 2;
+        this.id = count.incrementAndGet();
+    }
+
+    String brand;
+    double price;
+    private static final AtomicInteger count = new AtomicInteger(0);
+    int id;
+
     public String getBrand() {
         return brand;
     }
@@ -33,14 +44,4 @@ public class Soda {
         return this;
     }
 
-    String brand;
-    double price;
-    private static final AtomicInteger count = new AtomicInteger(0);
-    int id;
-
-    Soda(String brand){
-        this.brand = brand;
-        this.price = 1.50;
-        this.id = count.incrementAndGet();
-    }
 }
