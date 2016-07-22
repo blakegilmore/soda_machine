@@ -12,8 +12,8 @@ public class InventoryController {
     Inventory inventory;
 
     @RequestMapping("/inventory")
-    public Greeting inventory() {
-        return new Greeting(0,"hello");
+    public Inventory inventory() {
+        return new Inventory();
     }
 
     @RequestMapping(value = "/updateSoda", method = RequestMethod.PATCH)
