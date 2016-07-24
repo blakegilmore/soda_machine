@@ -36,9 +36,9 @@ public class Inventory {
         return inventoryByBrand;
     }
 
-    public void getInventorySize() {
+    public int getInventorySize() {
         System.out.println("There are " + inventory.size() + " sodas total.");
-        return;
+        return inventory.size();
     }
 
     public int getInventorySizeByInt() {
@@ -76,8 +76,10 @@ public class Inventory {
         return;
     }
 
-    public void addSoda(String brand,int i) {
-        inventory.put(i, new Soda(brand));
+    public void addSoda(String brand) {
+        Soda soda = new Soda(brand);
+        System.out.println(soda.id);
+        inventory.put(soda.id, soda);
     }
 
     public void addSelection(){
@@ -89,7 +91,7 @@ public class Inventory {
             addMultipleSodas(toAdd, brand);
         } else if (input.equals("one")) {
             String brand = selection.captureUserInput("brand?");
-            addSoda(brand,inventory.size());
+            addSoda(brand);
             System.out.println("Added "+brand);
         } else {
             System.out.println("Unavailable, please make a different selection.\n");
@@ -99,7 +101,7 @@ public class Inventory {
     /// method that refills the stock by adding the number of sodas needed for the rack to be filled
     public void addMultipleSodas(int toAdd, String brand) {
         for (int i = 0; i < toAdd; i++) {
-            addSoda(brand,inventory.size());
+            addSoda(brand);
         }
         getInventoryByBrand();
     }

@@ -1,6 +1,8 @@
 package hello;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -9,11 +11,11 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class InventoryController {
 
-    Inventory inventory;
+    Inventory inventory = new Inventory();
 
     @RequestMapping("/inventory")
-    public Inventory inventory() {
-        return new Inventory();
+    public List getInventory() {
+        return inventory.getInventoryByBrand();
     }
 
     @RequestMapping(value = "/updateSoda", method = RequestMethod.PATCH)
@@ -23,9 +25,9 @@ public class InventoryController {
 
     @RequestMapping(value = "/addSoda", method = RequestMethod.POST)
     public @ResponseBody Soda addSoda(@RequestParam(value="brand", defaultValue="Coke") String brand,
-                                      @RequestParam(value="id", defaultValue = "0") int id,
                                       @RequestParam(value="price", defaultValue = "1.5") double price){
-        return new Soda(brand,id,price);
+        inventory.addSoda(brand);
+        return inventory.getValueFromIndex(inventory.getInventorySize());
     }
 
 
@@ -34,12 +36,3 @@ public class InventoryController {
         return soda;
     }
 }
-
-//[soda1, soda2, soda3]
-//
-//        {
-//            date: "7-21-2016",
-//            numOfCokes: 4,
-//            numOfPepsis: 6,
-//            inventory: [soda1, soda2, soda3]
-//        }
