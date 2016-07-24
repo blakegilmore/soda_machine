@@ -26,10 +26,9 @@ public class InventoryController {
     @RequestMapping(value = "/addSoda", method = RequestMethod.POST)
     public @ResponseBody Soda addSoda(@RequestParam(value="brand", defaultValue="Coke") String brand,
                                       @RequestParam(value="price", defaultValue = "1.5") double price){
-        inventory.addSoda(brand);
+        inventory.addSoda(brand,price);
         return inventory.getValueFromIndex(inventory.getInventorySize());
     }
-
 
     private Soda convertBrand(String newBrand, Soda soda){
          soda.brand = newBrand;
