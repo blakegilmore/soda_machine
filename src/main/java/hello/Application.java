@@ -12,6 +12,7 @@ import java.sql.*;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
 import java.util.stream.Collectors;
 
 @SpringBootApplication
@@ -23,6 +24,8 @@ public class Application {
     public static void main(String[] args) throws InterruptedException {
         Statement stmt = null;
         ResultSet rs = null;
+        Scanner scanner = new Scanner(System.in).useDelimiter("\n");
+        Selection selection = new Selection();
 
         try {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
@@ -37,12 +40,23 @@ public class Application {
             conn = DriverManager.getConnection("jdbc:mysql://localhost/test?" + "user=root&password=password");
 
             // Do something with the Connection
+            log.info("Creating tables");
+
             stmt = conn.createStatement();
             stmt.executeQuery("DROP TABLE sodas IF EXISTS");
             stmt.executeQuery("CREATE TABLE sodas(" +
                     "id SERIAL, brand VARCHAR(255), price INT)");
-            
+
+            log.info("Created table ");
+
+            ////ask the user to enter the brand of the soda they want to add
+            String input = selection.captureUserInput("Enter brand,price");
+            String[] inputArray = input.split(",");
             /// add a soda to the table with a given brand name
+            stmt.execute("INSERT INTO sodas(brand, price) VALUES (?,?)", inputArray);
+            ///// print the soda
+            
+
 
         } catch (SQLException ex) {
             // handle any errors
