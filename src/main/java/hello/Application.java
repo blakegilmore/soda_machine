@@ -31,7 +31,7 @@ public class Application {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
         } catch (Exception ex) {
             // handle the error
-            System.out.println("There was an error with the driver");
+            System.out.println("Error with the driver");
         }
 
         Connection conn = null;
@@ -43,8 +43,8 @@ public class Application {
             log.info("Creating tables");
 
             stmt = conn.createStatement();
-            stmt.executeQuery("DROP TABLE sodas IF EXISTS");
-            stmt.executeQuery("CREATE TABLE sodas(" +
+            stmt.execute("DROP TABLE sodas IF EXISTS");
+            stmt.execute("CREATE TABLE sodas(" +
                     "id SERIAL, brand VARCHAR(255), price INT)");
 
             log.info("Created table ");
@@ -55,7 +55,7 @@ public class Application {
             /// add a soda to the table with a given brand name
             stmt.execute("INSERT INTO sodas(brand, price) VALUES (?,?)", inputArray);
             ///// print the soda
-            
+
 
 
         } catch (SQLException ex) {
@@ -65,13 +65,10 @@ public class Application {
             System.out.println("VendorError: " + ex.getErrorCode());
         }
 
-        Selection mySelection = new Selection();
-        mySelection.selectSoda();
-        SpringApplication.run(Application.class, args);
+//        Selection mySelection = new Selection();
+//        mySelection.selectSoda();
+//        SpringApplication.run(Application.class, args);
     }
-
-    @Autowired
-    JdbcTemplate jdbcTemplate;
 
 }
 
