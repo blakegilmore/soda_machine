@@ -43,7 +43,7 @@ public class Application {
             log.info("Creating tables");
 
             stmt = conn.createStatement();
-            stmt.execute("DROP TABLE sodas IF EXISTS");
+            stmt.execute("DROP TABLE IF EXISTS sodas");
             stmt.execute("CREATE TABLE sodas(" +
                     "id SERIAL, brand VARCHAR(255), price INT)");
 
