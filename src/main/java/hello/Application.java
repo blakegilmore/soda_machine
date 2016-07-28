@@ -10,6 +10,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import java.sql.*;
 
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
@@ -49,12 +50,13 @@ public class Application {
 
             log.info("Created table ");
 
-            ////ask the user to enter the brand of the soda they want to add
             String input = selection.captureUserInput("Enter brand,price");
             String[] inputArray = input.split(",");
-            /// add a soda to the table with a given brand name
-            stmt.execute("INSERT INTO sodas(brand, price) VALUES (?,?)", inputArray);
-            ///// print the soda
+            String query = "INSERT into sodas (brand,price)" + "VALUES (?,?)";
+            PreparedStatement preparedStmt = conn.prepareStatement(query);
+            preparedStmt.setString(1, inputArray[0]);
+            preparedStmt.setString(2, inputArray[1]);
+            preparedStmt.execute(query);
 
 
 
